@@ -2,40 +2,21 @@
 🔥 Please join our discord server https://discord.gg/k5BwmmvJJU <br />
 🥳 Please join my patreon community https://patreon.com/camenduru <br />
 
-# 🚦WIP🚦
+### 🧿 Camenduru
+https://web.camenduru.com/sdxl
 
-### 🔥 Motivation and Action
+### 🧬 Code
+https://github.com/Stability-AI/generative-models
 
-This project aims to create a UI for https://github.com/camenduru/camenduru
+### 📄 Paper
+https://arxiv.org/abs/2307.01952
 
-- https://github.com/camenduru/web <br />
-- https://github.com/camenduru/discord <br />
-- https://github.com/camenduru/service <br />
+### 🌐 Page
+https://stability.ai/news/stable-diffusion-sdxl-1-announcement
 
-### 🗃️ Database Provider
+### 📦 Model
+https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0 <br />
+https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0 <br />
 
-https://cloud.mongodb.com/ (512MB Free Shared)
+### 🖼 Output
 
-### 💌 Mail Provider
-
-https://gmail.com/ (Free smtp.gmail.com)
-
-### 🌐 Web Application Framework
-
-https://spring.io/ <br />
-https://github.com/spring-projects <br />
-
-### 🖼️ Web User Interface Framework
-
-https://angular.io/ <br />
-https://github.com/angular/angular <br />
-
-### ⚡ Web Application Generator
-
-https://www.jhipster.tech/ <br />
-https://github.com/jhipster/generator-jhipster <br />
-
-- ### 📋 Tutorial
-- https://www.youtube.com/watch?v=IfyjKCt6YHE
-
-  ![Screenshot 2024-04-25 234203](https://github.com/camenduru/web/assets/54370274/761cc0f9-2b36-457e-bf0c-03cc0924fe08)
