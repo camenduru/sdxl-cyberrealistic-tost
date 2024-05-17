@@ -23,9 +23,7 @@ def closestNumber(n, m):
     return n2
 
 def generate(input):
-    command = input["input"]
-    command = json.dumps(command)
-    values = json.loads(command)
+    values = input["input"]
     width = closestNumber(values['width'], 8)
     height = closestNumber(values['height'], 8)
     images = pipe(values['prompt'], negative_prompt=values['negative_prompt'], num_inference_steps=25, guidance_scale=7.5, width=width, height=height)
@@ -35,9 +33,11 @@ def generate(input):
     response = None
     try:
         source_id = values['source_id']
-        source_channel = values['source_channel']
+        del values['source_id']
+        source_channel = values['source_channel']     
+        del values['source_channel']
         files = {f"image.png": open(result, "rb").read()}
-        payload = {"content": f"{command} <@{source_id}>"}
+        payload = {"content": f"{json.dumps(values)} <@{source_id}>"}
         response = requests.post(
             f"https://discord.com/api/v9/channels/{source_channel}/messages",
             data=payload,
