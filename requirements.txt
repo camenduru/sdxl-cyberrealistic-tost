@@ -1,0 +1,10 @@
+diffusers
+transformers
+accelerate
+xformers==0.0.25
+safetensors
+opencv-python
+pillow
+einops
+peft
+runpod
