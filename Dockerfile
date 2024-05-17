@@ -12,4 +12,4 @@ COPY ./requirements.txt /content/requirements.txt
 RUN pip install --no-cache-dir --upgrade -r /content/requirements.txt
 COPY . .
 USER camenduru
-CMD python worker.py
+CMD python worker_runpod.py
