@@ -11,7 +11,10 @@
         "paper": "https://arxiv.org/abs/2307.01952",
         "page": "https://stability.ai/news/stable-diffusion-sdxl-1-announcement",
         "jupyter": "https://github.com/camenduru/sdxl-colab",
-        "replicate": "https://replicate.com/stability-ai/sdxl",
+        "post": "https://twitter.com/camenduru/status/1697317138116034778",
+        "tags": [
+          "Text to Image"
+        ],
         "widget": "readme"
       },
       "prompt": {
@@ -36,7 +39,7 @@
     "buttons": [
       {
         "id": "enter",
-        "label": "🧿 Enter"
+        "label": "🥪 Enter"
       }
     ]
-  }
+}
