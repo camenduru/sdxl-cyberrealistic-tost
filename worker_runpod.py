@@ -4,6 +4,8 @@ import json, os, requests
 import runpod
 
 discord_token = os.getenv('com_camenduru_discord_token')
+web_uri = os.getenv('com_camenduru_web_uri')
+web_token = os.getenv('com_camenduru_web_token')
 
 pipe = AutoPipelineForText2Image.from_pretrained(
     "misri/cyberrealisticXL_v11VAE",
@@ -36,6 +38,8 @@ def generate(input):
         del values['source_id']
         source_channel = values['source_channel']     
         del values['source_channel']
+        job_id = values['job_id']
+        del values['job_id']
         files = {f"image.png": open(result, "rb").read()}
         payload = {"content": f"{json.dumps(values)} <@{source_id}>"}
         response = requests.post(
@@ -52,7 +56,13 @@ def generate(input):
             os.remove(result)
 
     if response and response.status_code == 200:
-        return {"result": response.json()['attachments'][0]['url']}
+        try:
+            payload = {"job_id": job_id, "result": response.json()['attachments'][0]['url']}
+            response = requests.post(f"{web_uri}/api/notify", data=payload, headers={"authorization": f"{web_token}"})
+        except Exception as e:
+            print(f"An unexpected error occurred: {e}")
+        finally:
+            return {"result": response.json()['attachments'][0]['url']}
     else:
         return {"result": "ERROR"}
 
