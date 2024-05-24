@@ -18,5 +18,5 @@ https://stability.ai/news/stable-diffusion-sdxl-1-announcement
 https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0 <br />
 https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0 <br />
 
-### 🖼 Output
-
+### 🏢 Sponsor
+https://runpod.io
