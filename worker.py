@@ -21,6 +21,7 @@ def closestNumber(n, m):
         return n1
     return n2
 
+@torch.inference_mode()
 def generate(command):
     values = json.loads(command)
     width = closestNumber(values['width'], 8)
