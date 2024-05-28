@@ -7,7 +7,7 @@ Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/
 Environment="GRADIO_ANALYTICS_ENABLED=False"
 Environment="server_port=1012"
 WorkingDirectory=/content/com.camenduru/sdxl-tost
-ExecStart=/bin/bash -c 'python worker.py'
+ExecStart=/bin/bash -c '. /content/sdxl-venv/bin/activate && python worker.py'
 Restart=always
 [Install]
 WantedBy=multi-user.target
