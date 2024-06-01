@@ -18,21 +18,23 @@ RUN pip install -q opencv-python==4.9.0.80 imageio==2.34.1 imageio-ffmpeg==0.5.0
 
 RUN aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/misri/cyberrealisticXL_v11VAE/raw/main/scheduler/scheduler_config.json -d /content/model/scheduler -o scheduler_config.json && \
 	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/misri/cyberrealisticXL_v11VAE/raw/main/text_encoder/config.json -d /content/model/text_encoder -o config.json && \
-	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/misri/cyberrealisticXL_v11VAE/resolve/main/text_encoder/pytorch_model.bin -d /content/model/text_encoder -o pytorch_model.bin && \
+	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/misri/cyberrealisticXL_v11VAE/resolve/main/text_encoder/model.fp16.safetensors -d /content/model/text_encoder -o model.fp16.safetensors && \
 	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/misri/cyberrealisticXL_v11VAE/raw/main/text_encoder_2/config.json -d /content/model/text_encoder_2 -o config.json && \
-	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/misri/cyberrealisticXL_v11VAE/resolve/main/text_encoder_2/pytorch_model.bin -d /content/model/text_encoder_2 -o pytorch_model.bin && \
+	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/misri/cyberrealisticXL_v11VAE/resolve/main/text_encoder_2/model.fp16.safetensors -d /content/model/text_encoder_2 -o model.fp16.safetensors && \
+	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/misri/cyberrealisticXL_v11VAE/raw/main/tokenizer/added_tokens.json -d /content/model/tokenizer -o added_tokens.json && \
 	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/misri/cyberrealisticXL_v11VAE/raw/main/tokenizer/merges.txt -d /content/model/tokenizer -o merges.txt && \
 	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/misri/cyberrealisticXL_v11VAE/raw/main/tokenizer/special_tokens_map.json -d /content/model/tokenizer -o special_tokens_map.json && \
 	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/misri/cyberrealisticXL_v11VAE/raw/main/tokenizer/tokenizer_config.json -d /content/model/tokenizer -o tokenizer_config.json && \
 	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/misri/cyberrealisticXL_v11VAE/raw/main/tokenizer/vocab.json -d /content/model/tokenizer -o vocab.json && \
+	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/misri/cyberrealisticXL_v11VAE/raw/main/tokenizer_2/added_tokens.json -d /content/model/tokenizer_2 -o added_tokens.json && \
 	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/misri/cyberrealisticXL_v11VAE/raw/main/tokenizer_2/merges.txt -d /content/model/tokenizer_2 -o merges.txt && \
 	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/misri/cyberrealisticXL_v11VAE/raw/main/tokenizer_2/special_tokens_map.json -d /content/model/tokenizer_2/ -o pecial_tokens_map.json && \
 	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/misri/cyberrealisticXL_v11VAE/raw/main/tokenizer_2/tokenizer_config.json -d /content/model/tokenizer_2 -o tokenizer_config.json && \
 	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/misri/cyberrealisticXL_v11VAE/raw/main/tokenizer_2/vocab.json -d /content/model/tokenizer_2 -o vocab.json && \
 	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/misri/cyberrealisticXL_v11VAE/raw/main/unet/config.json -d /content/model/unet -o config.json && \
-	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/misri/cyberrealisticXL_v11VAE/resolve/main/unet/diffusion_pytorch_model.bin -d /content/model/unet -o diffusion_pytorch_model.bin && \
+	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/misri/cyberrealisticXL_v11VAE/resolve/main/unet/diffusion_pytorch_model.fp16.safetensors -d /content/model/unet -o diffusion_pytorch_model.fp16.safetensors && \
 	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/misri/cyberrealisticXL_v11VAE/raw/main/vae/config.json -d /content/model/vae -o config.json && \
-	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/misri/cyberrealisticXL_v11VAE/resolve/main/vae/diffusion_pytorch_model.bin -d /content/model/vae -o diffusion_pytorch_model.bin && \
+	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/misri/cyberrealisticXL_v11VAE/resolve/main/vae/diffusion_pytorch_model.fp16.safetensors -d /content/model/vae -o diffusion_pytorch_model.fp16.safetensors && \
 	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/misri/cyberrealisticXL_v11VAE/raw/main/model_index.json -d /content/model -o model_index.json
 
 COPY ./worker_runpod.py /content/worker_runpod.py
