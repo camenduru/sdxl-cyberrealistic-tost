@@ -8,7 +8,7 @@ web_uri = os.getenv('com_camenduru_web_uri')
 web_token = os.getenv('com_camenduru_web_token')
 
 pipe = AutoPipelineForText2Image.from_pretrained(
-    "misri/cyberrealisticXL_v11VAE",
+    "/content/model",
     torch_dtype=torch.float16,
     variant="fp16",
     requires_safety_checker=False).to("cuda:0")
@@ -24,7 +24,6 @@ def closestNumber(n, m):
         return n1
     return n2
 
-@torch.inference_mode()
 def generate(input):
     values = input["input"]
     width = closestNumber(values['width'], 8)
