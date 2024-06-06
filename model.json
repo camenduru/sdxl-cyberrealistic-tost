@@ -1,6 +1,11 @@
 {
-    "prompt": "Totoro at the pool eating toast",
-    "negative_prompt": "lowres, text, error, cropped, worst quality, low quality, jpeg artifacts, ugly, duplicate, morbid, mutilated, out of frame, extra fingers, mutated hands, poorly drawn hands, poorly drawn face, mutation, deformed, blurry, dehydrated, bad anatomy, bad proportions, extra limbs, cloned face, disfigured, gross proportions, malformed limbs, missing arms, missing legs, extra arms, extra legs, fused fingers, too many fingers, long neck, username, watermark, signature",
-    "width": 1152,
-    "height": 832
+    "positive_prompt": "medium close up shot,  <lora:Belle_XL:0.75>, solo, photo of a woman, blond hair, standing on the dock, at night, city lights in background, dark, (sharp forcus, highly detailed, 4k, 8k, best quality, masterpiece, ultra highres:1)",
+    "negative_prompt": "full body shot, cleavage, extra limb, missing limb, floating limbs, (mutated hands and fingers:1.1), disconnected limbs, blurry, amputation, 3d, cgi, airbrushed, model, render, sketch, cartoon, drawing, anime",
+    "seed": 0,
+    "steps": 45,
+    "cfg": 6.5,
+    "sampler_name": "dpmpp_2m_sde_gpu",
+    "scheduler": "karras",
+    "width": 832,
+    "height": 1152
 }

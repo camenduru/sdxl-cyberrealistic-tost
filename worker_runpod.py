@@ -1,37 +1,57 @@
-from diffusers import AutoPipelineForText2Image
+import os, json, requests, runpod
+
+import random
 import torch
-import json, os, requests
-import runpod
+import numpy as np
+from PIL import Image
+from comfy.sd import load_checkpoint_guess_config
+import nodes
 
 discord_token = os.getenv('com_camenduru_discord_token')
 web_uri = os.getenv('com_camenduru_web_uri')
 web_token = os.getenv('com_camenduru_web_token')
 
-pipe = AutoPipelineForText2Image.from_pretrained(
-    "/content/model",
-    torch_dtype=torch.float16,
-    variant="fp16",
-    requires_safety_checker=False).to("cuda:0")
+with torch.inference_mode():
+    model_patcher, clip, vae, clipvision = load_checkpoint_guess_config("/content/ComfyUI/models/checkpoints/model.safetensors", output_vae=True, output_clip=True, embedding_directory=None)
 
-def closestNumber(n, m):
-    q = int(n / m)
-    n1 = m * q
-    if (n * m) > 0:
-        n2 = m * (q + 1)
-    else:
-        n2 = m * (q - 1)
-    if abs(n - n1) < abs(n - n2):
-        return n1
-    return n2
-
+@torch.inference_mode()
 def generate(input):
     values = input["input"]
-    width = closestNumber(values['width'], 8)
-    height = closestNumber(values['height'], 8)
-    images = pipe(values['prompt'], negative_prompt=values['negative_prompt'], num_inference_steps=25, guidance_scale=7.5, width=width, height=height)
-    result = f"/content/{input['id']}.png"
-    images.images[0].save(result)
-    
+
+    positive_prompt = values['positive_prompt']
+    negative_prompt = values['negative_prompt']
+    width = values['width']
+    height = values['height']
+    seed = values['seed']
+    steps = values['steps']
+    cfg = values['cfg']
+    sampler_name = values['sampler_name']
+    scheduler = values['scheduler']
+
+    latent = {"samples":torch.zeros([1, 4, height // 8, width // 8])}
+    cond, pooled = clip.encode_from_tokens(clip.tokenize(positive_prompt), return_pooled=True)
+    cond = [[cond, {"pooled_output": pooled}]]
+    n_cond, n_pooled = clip.encode_from_tokens(clip.tokenize(negative_prompt), return_pooled=True)
+    n_cond = [[n_cond, {"pooled_output": n_pooled}]]
+    if seed == 0:
+        seed = random.randint(0, 18446744073709551615)
+    print(seed)
+    sample = nodes.common_ksampler(model=model_patcher, 
+                            seed=seed, 
+                            steps=steps, 
+                            cfg=cfg, 
+                            sampler_name=sampler_name, 
+                            scheduler=scheduler, 
+                            positive=cond, 
+                            negative=n_cond,
+                            latent=latent, 
+                            denoise=1)
+    sample = sample[0]["samples"].to(torch.float16)
+    vae.first_stage_model.cuda()
+    decoded = vae.decode_tiled(sample).detach()
+    Image.fromarray(np.array(decoded*255, dtype=np.uint8)[0]).save("/content/output_image.png")
+
+    result = "/content/output_image.png"
     response = None
     try:
         source_id = values['source_id']
