@@ -180,12 +180,6 @@
       "description": "Scheduler",
       "oneOf": [
         {
-          "description": "normal",
-          "enum": [
-            "normal"
-          ]
-        },
-        {
           "description": "karras",
           "enum": [
             "karras"
