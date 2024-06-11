@@ -16,11 +16,13 @@
     },
     "positive_prompt": {
       "type": "string",
-      "description": "Prompt"
+      "description": "Prompt",
+      "widget": "textarea"
     },
     "negative_prompt": {
       "type": "string",
-      "description": "Negative Prompt"
+      "description": "Negative Prompt",
+      "widget": "textarea"
     },
     "seed": {
       "type": "integer",
