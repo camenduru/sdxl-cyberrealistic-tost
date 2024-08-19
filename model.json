@@ -1,5 +1,5 @@
 {
-    "positive_prompt": "medium close up shot,  <lora:Belle_XL:0.75>, solo, photo of a woman, blond hair, standing on the dock, at night, city lights in background, dark, (sharp forcus, highly detailed, 4k, 8k, best quality, masterpiece, ultra highres:1)",
+    "positive_prompt": "medium close up shot, solo, photo of a woman, blond hair, standing on the dock, at night, city lights in background, dark, (sharp forcus, highly detailed, 4k, 8k, best quality, masterpiece, ultra highres:1)",
     "negative_prompt": "full body shot, cleavage, extra limb, missing limb, floating limbs, (mutated hands and fingers:1.1), disconnected limbs, blurry, amputation, 3d, cgi, airbrushed, model, render, sketch, cartoon, drawing, anime",
     "seed": 0,
     "steps": 45,
