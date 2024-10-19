@@ -19,4 +19,4 @@ https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0 <br />
 https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0 <br />
 
 ### 🏢 Sponsor
-https://runpod.io
+[https://runpod.io](https://runpod.io?ref=iqi9iy8y)
